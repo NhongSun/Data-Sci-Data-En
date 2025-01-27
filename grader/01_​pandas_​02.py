@@ -12,7 +12,6 @@ def Q1():
     1. How many rows are there in the GBvideos.csv after removing duplications?
         - To access 'GBvideos.csv', use the path '/data/GBvideos.csv'.
     """
-    # TODO: Paste your code here
     df = pd.read_csv("/data/GBvideos.csv")
     return len(df.drop_duplicates())
 
@@ -23,7 +22,6 @@ def Q2(vdo_df):
         - GBvideos.csv has been loaded into memory and is ready to be utilized as vdo_df
         - The duplicate rows of vdo_df have been removed.
     """
-    # TODO: Paste your code here
     vdo_df = vdo_df.drop_duplicates()
     return vdo_df[vdo_df["dislikes"] > vdo_df["likes"]]["title"].nunique()
 
@@ -35,7 +33,6 @@ def Q3(vdo_df):
         - The duplicate rows of vdo_df have been removed.
         - The trending date of vdo_df is represented as 'YY.DD.MM'. For example, January 22, 2018, is represented as '18.22.01'.
     """
-    # TODO: Paste your code here
     return (
         (vdo_df["trending_date"] == "18.22.01") & (vdo_df["comment_count"] > 10000)
     ).sum()
@@ -47,7 +44,6 @@ def Q4(vdo_df):
         - GBvideos.csv has been loaded into memory and is ready to be utilized as vdo_df
         - The duplicate rows of vdo_df have been removed.
     """
-    # TODO:  Paste your code here
     return (vdo_df.groupby("trending_date")["comment_count"].mean()).idxmin()
 
 

@@ -18,7 +18,6 @@ def Q1(df: DataFrame):
     Problem 1:
         How many rows are there in the "titanic_to_student.csv"?
     """
-    # TODO: Code here
     return df.shape[0]
 
 
@@ -30,7 +29,6 @@ def Q2(df: DataFrame):
         Drop categorical variables with flat values > 70% (variables with the same value in the same column)
         How many columns do we have left?
     """
-    # TODO: Code here
     half_missing = df.isnull().sum() > df.shape[0] / 2
     df.drop(df.columns[half_missing], axis=1, inplace=True)
 
@@ -48,7 +46,6 @@ def Q3(df: DataFrame):
          Remove all rows with missing targets (the variable "Survived")
          How many rows do we have left?
     """
-    # TODO: Code here
     df.dropna(subset=["Survived"], inplace=True)
 
     return df.shape[0]
@@ -64,7 +61,6 @@ def Q4(df: DataFrame):
          What is the mean of “Fare” after replacing the outliers (round 2 decimal points)?
          Hint: Use function round(_, 2)
     """
-    # TODO: Code here
     q25, q75 = np.percentile(df["Fare"], [25, 75])
     iqr = q75 - q25
 
@@ -85,7 +81,6 @@ def Q5(df: DataFrame):
          What is the average (mean) of “Age” after imputing the missing values (round 2 decimal points)?
          Hint: Use function round(_, 2)
     """
-    # TODO: Code here
     num_imp = SimpleImputer(missing_values=np.nan, strategy="mean")
     df[["Pclass", "Age", "SibSp"]] = pd.DataFrame(
         num_imp.fit_transform(df[["Pclass", "Age", "SibSp"]])
@@ -102,7 +97,6 @@ def Q6(df: DataFrame):
         What is the average (mean) of “Embarked_Q” after performing dummy coding (round 2 decimal points)?
         Hint: Use function round(_, 2)
     """
-    # TODO: Code here
     enc = OneHotEncoder(handle_unknown="ignore")
     # passing bridge-types-cat column (label encoded values of bridge_types)
     nominal_columns = ["Embarked"]
@@ -127,7 +121,6 @@ def Q7(df: DataFrame):
         Hint: Use function round(_, 2), and train_test_split() from sklearn.model_selection,
         Don't forget to impute missing values with mean.
     """
-    # TODO: Code here
     num_imp = SimpleImputer(missing_values=np.nan, strategy="mean")
     df["Survived"] = pd.DataFrame(num_imp.fit_transform(df[["Survived"]]))
     df["Survived"] = df["Survived"].apply(lambda x: 1.0 if x > 0.5 else 0.0)
