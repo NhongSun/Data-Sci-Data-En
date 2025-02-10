@@ -43,19 +43,10 @@ class Clustering:
         kmeans = KMeans(n_clusters=5, random_state=0, n_init="auto")
         kmeans.fit(self.scaled_features)
 
-        self.centroids = kmeans.cluster_centers_
+        self.centroids = kmeans.cluster_centers_  # 5 coors for k=5
+
         max_centroid = np.max(self.centroids, axis=0)
-        # print(self.scaled_features)
-        # print(self.centroids)
         return np.round(max_centroid, 2)
-
-        kmeans = KMeans(n_clusters=5, random_state=0, n_init="auto")
-        kmeans.fit(self.scaled_features)
-
-        # Store centroids for Q3
-        self.centroids = kmeans.cluster_centers_
-        # Find the maximum centroid for both features
-        max_centroid = np.max(self.centroids, axis=0)
 
     def Q3(self):  # DO NOT modify this line
         """
