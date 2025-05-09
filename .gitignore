@@ -4,8 +4,9 @@
 data.tgz
 data
 graderQ
-USvideos.csv
-filtered_loans_2007.csv
-cleaned_loans_2007.csv
-kyphosis.csv
 model.sav
+lib
+*.csv
+*.gml
+*.docx
+*.txt
